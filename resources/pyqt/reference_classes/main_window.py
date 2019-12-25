@@ -1,0 +1,98 @@
+# -*- coding: utf-8 -*-
+
+# Form implementation generated from reading ui file 'main_window.ui'
+#
+# Created by: PyQt5 UI code generator 5.9.2
+#
+# WARNING! All changes made in this file will be lost!
+
+from PyQt5 import QtCore, QtGui, QtWidgets
+
+class Ui_MainWindow(object):
+    def setupUi(self, MainWindow):
+        MainWindow.setObjectName("MainWindow")
+        MainWindow.resize(1366, 768)
+        font = QtGui.QFont()
+        font.setPointSize(12)
+        MainWindow.setFont(font)
+        MainWindow.setTabShape(QtWidgets.QTabWidget.Rounded)
+        self.centralwidget = QtWidgets.QWidget(MainWindow)
+        self.centralwidget.setObjectName("centralwidget")
+        MainWindow.setCentralWidget(self.centralwidget)
+        self.toolBar = QtWidgets.QToolBar(MainWindow)
+        font = QtGui.QFont()
+        font.setPointSize(15)
+        self.toolBar.setFont(font)
+        self.toolBar.setAutoFillBackground(True)
+        self.toolBar.setMovable(False)
+        self.toolBar.setIconSize(QtCore.QSize(30, 30))
+        self.toolBar.setToolButtonStyle(QtCore.Qt.ToolButtonTextBesideIcon)
+        self.toolBar.setFloatable(True)
+        self.toolBar.setObjectName("toolBar")
+        MainWindow.addToolBar(QtCore.Qt.TopToolBarArea, self.toolBar)
+        self.statusbar = QtWidgets.QStatusBar(MainWindow)
+        self.statusbar.setObjectName("statusbar")
+        MainWindow.setStatusBar(self.statusbar)
+        self.main_page_action = QtWidgets.QAction(MainWindow)
+        self.main_page_action.setCheckable(False)
+        self.main_page_action.setChecked(False)
+        self.main_page_action.setEnabled(True)
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap("../../images/icons8-dom-30.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.main_page_action.setIcon(icon)
+        font = QtGui.QFont()
+        font.setPointSize(15)
+        self.main_page_action.setFont(font)
+        self.main_page_action.setObjectName("main_page_action")
+        self.customers_action = QtWidgets.QAction(MainWindow)
+        self.customers_action.setCheckable(False)
+        icon1 = QtGui.QIcon()
+        icon1.addPixmap(QtGui.QPixmap("../../images/icons8-grupy-użytkownika-mężczyzna-mężczyzna-30.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon1.addPixmap(QtGui.QPixmap(":/icon/images/icons8-grupy-użytkownika-mężczyzna-mężczyzna-30.png"), QtGui.QIcon.Active, QtGui.QIcon.Off)
+        self.customers_action.setIcon(icon1)
+        font = QtGui.QFont()
+        font.setPointSize(15)
+        self.customers_action.setFont(font)
+        self.customers_action.setObjectName("customers_action")
+        self.items_action = QtWidgets.QAction(MainWindow)
+        self.items_action.setCheckable(False)
+        icon2 = QtGui.QIcon()
+        icon2.addPixmap(QtGui.QPixmap("../../images/icons8-produkt-30.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon2.addPixmap(QtGui.QPixmap(":/icon/images/icons8-produkt-30.png"), QtGui.QIcon.Selected, QtGui.QIcon.Off)
+        self.items_action.setIcon(icon2)
+        font = QtGui.QFont()
+        font.setPointSize(15)
+        self.items_action.setFont(font)
+        self.items_action.setObjectName("items_action")
+        self.settings_action = QtWidgets.QAction(MainWindow)
+        self.settings_action.setCheckable(False)
+        icon3 = QtGui.QIcon()
+        icon3.addPixmap(QtGui.QPixmap("../../images/icons8-usługi-30.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon3.addPixmap(QtGui.QPixmap(":/icon/images/icons8-usługi-30.png"), QtGui.QIcon.Active, QtGui.QIcon.Off)
+        self.settings_action.setIcon(icon3)
+        font = QtGui.QFont()
+        font.setPointSize(15)
+        self.settings_action.setFont(font)
+        self.settings_action.setObjectName("settings_action")
+        self.toolBar.addAction(self.main_page_action)
+        self.toolBar.addAction(self.customers_action)
+        self.toolBar.addAction(self.items_action)
+        self.toolBar.addAction(self.settings_action)
+
+        self.retranslateUi(MainWindow)
+        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+
+    def retranslateUi(self, MainWindow):
+        _translate = QtCore.QCoreApplication.translate
+        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        self.toolBar.setWindowTitle(_translate("MainWindow", "toolBar"))
+        self.main_page_action.setText(_translate("MainWindow", "Strona główna"))
+        self.main_page_action.setToolTip(_translate("MainWindow", "Przełącz na stronę główną"))
+        self.customers_action.setText(_translate("MainWindow", "Kontrahenci"))
+        self.customers_action.setToolTip(_translate("MainWindow", "Przełącz do widoku kontrahentów"))
+        self.items_action.setText(_translate("MainWindow", "Towary i usługi"))
+        self.items_action.setToolTip(_translate("MainWindow", "Przełącz do widoku towarów i usług"))
+        self.settings_action.setText(_translate("MainWindow", "Ustawienia"))
+        self.settings_action.setToolTip(_translate("MainWindow", "Przełącz do widoku ustawień"))
+
+import icons_resource_rc
