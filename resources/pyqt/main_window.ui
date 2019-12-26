@@ -57,7 +57,7 @@
    </attribute>
    <addaction name="main_page_action"/>
    <addaction name="customers_action"/>
-   <addaction name="items_action"/>
+   <addaction name="products_action"/>
    <addaction name="settings_action"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
@@ -108,7 +108,7 @@
     </font>
    </property>
   </action>
-  <action name="items_action">
+  <action name="products_action">
    <property name="checkable">
     <bool>false</bool>
    </property>
@@ -151,8 +151,6 @@
    </property>
   </action>
  </widget>
- <resources>
-  <include location="../icons_resource.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>
