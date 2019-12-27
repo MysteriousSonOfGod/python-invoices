@@ -1,12 +1,12 @@
 from PyQt5.QtWidgets import QMainWindow
 
-from resources.pyqt.reference_classes.main_window import Ui_MainWindow
-from PyQt5 import uic, QtCore
+from pyqt.reference_classes.main_window import Ui_MainWindow
+from PyQt5 import QtCore
 
-from resources.windows.customers_window import CustomersWindow
-from resources.windows.home_window import HomeWindow
-from resources.windows.products_window import ProductsWindow
-from resources.windows.settings_window import SettingsWindow
+from windows.customers_window import CustomersWindow
+from windows.home_window import HomeWindow
+from windows.products_window import ProductsWindow
+from windows.settings_window import SettingsWindow
 
 
 class MainWindow(QMainWindow, Ui_MainWindow):

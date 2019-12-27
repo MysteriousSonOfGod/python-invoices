@@ -1,7 +1,7 @@
 from PyQt5 import uic
 from PyQt5.QtWidgets import QWidget
 
-from resources.pyqt.reference_classes.products_window import Ui_ProductsWindow
+from pyqt.reference_classes.products_window import Ui_ProductsWindow
 
 
 class ProductsWindow(QWidget, Ui_ProductsWindow):

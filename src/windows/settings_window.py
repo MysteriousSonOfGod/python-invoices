@@ -1,7 +1,7 @@
 from PyQt5 import uic
 from PyQt5.QtWidgets import QWidget
 
-from resources.pyqt.reference_classes.settings_window import Ui_SettingsWindow
+from pyqt.reference_classes.settings_window import Ui_SettingsWindow
 
 
 class SettingsWindow(QWidget, Ui_SettingsWindow):

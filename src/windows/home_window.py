@@ -1,7 +1,7 @@
 from PyQt5 import uic
 from PyQt5.QtWidgets import QWidget
 
-from resources.pyqt.reference_classes.home_window import Ui_HomeWindow
+from pyqt.reference_classes.home_window import Ui_HomeWindow
 
 
 class HomeWindow(QWidget, Ui_HomeWindow):

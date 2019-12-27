@@ -1,7 +1,7 @@
 from PyQt5 import uic
 from PyQt5.QtWidgets import QWidget
 
-from resources.pyqt.reference_classes.customers_window import Ui_CustomersWindow
+from pyqt.reference_classes.customers_window import Ui_CustomersWindow
 
 
 class CustomersWindow(QWidget, Ui_CustomersWindow):
