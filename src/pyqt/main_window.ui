@@ -72,8 +72,8 @@
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset>
-     <normaloff>../images/icons8-dom-30.png</normaloff>../images/icons8-dom-30.png</iconset>
+    <iconset resource="../../resources/resources.qrc">
+     <normaloff>:/nowyPrzedrostek/images/icons8-dom-30.png</normaloff>:/nowyPrzedrostek/images/icons8-dom-30.png</iconset>
    </property>
    <property name="text">
     <string>Strona główna</string>
@@ -92,9 +92,9 @@
     <bool>false</bool>
    </property>
    <property name="icon">
-    <iconset>
-     <normaloff>../images/icons8-grupy-użytkownika-mężczyzna-mężczyzna-30.png</normaloff>
-     <activeoff>:/icon/images/icons8-grupy-użytkownika-mężczyzna-mężczyzna-30.png</activeoff>../images/icons8-grupy-użytkownika-mężczyzna-mężczyzna-30.png</iconset>
+    <iconset resource="../../resources/resources.qrc">
+     <normaloff>:/nowyPrzedrostek/images/icons8-grupy-użytkownika-mężczyzna-mężczyzna-30.png</normaloff>
+     <activeoff>:/icon/images/icons8-grupy-użytkownika-mężczyzna-mężczyzna-30.png</activeoff>:/nowyPrzedrostek/images/icons8-grupy-użytkownika-mężczyzna-mężczyzna-30.png</iconset>
    </property>
    <property name="text">
     <string>Kontrahenci</string>
@@ -113,9 +113,9 @@
     <bool>false</bool>
    </property>
    <property name="icon">
-    <iconset>
-     <normaloff>../images/icons8-produkt-30.png</normaloff>
-     <selectedoff>:/icon/images/icons8-produkt-30.png</selectedoff>../images/icons8-produkt-30.png</iconset>
+    <iconset resource="../../resources/resources.qrc">
+     <normaloff>:/nowyPrzedrostek/images/icons8-produkt-30.png</normaloff>
+     <selectedoff>:/icon/images/icons8-produkt-30.png</selectedoff>:/nowyPrzedrostek/images/icons8-produkt-30.png</iconset>
    </property>
    <property name="text">
     <string>Towary i usługi</string>
@@ -134,9 +134,9 @@
     <bool>false</bool>
    </property>
    <property name="icon">
-    <iconset>
-     <normaloff>../images/icons8-usługi-30.png</normaloff>
-     <activeoff>:/icon/images/icons8-usługi-30.png</activeoff>../images/icons8-usługi-30.png</iconset>
+    <iconset resource="../../resources/resources.qrc">
+     <normaloff>:/nowyPrzedrostek/images/icons8-usługi-30.png</normaloff>
+     <activeoff>:/icon/images/icons8-usługi-30.png</activeoff>:/nowyPrzedrostek/images/icons8-usługi-30.png</iconset>
    </property>
    <property name="text">
     <string>Ustawienia</string>
@@ -151,6 +151,8 @@
    </property>
   </action>
  </widget>
- <resources/>
+ <resources>
+  <include location="../../resources/resources.qrc"/>
+ </resources>
  <connections/>
 </ui>

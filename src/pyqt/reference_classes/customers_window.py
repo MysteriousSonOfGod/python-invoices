@@ -33,7 +33,7 @@ class Ui_CustomersWindow(object):
         font.setPointSize(15)
         self.pushButton_3.setFont(font)
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("../../../resources/images/icons8-dodaj-użytkownika-mężczyzna-30.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap(":/nowyPrzedrostek/images/icons8-dodaj-użytkownika-mężczyzna-30.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.pushButton_3.setIcon(icon)
         self.pushButton_3.setIconSize(QtCore.QSize(30, 30))
         self.pushButton_3.setObjectName("pushButton_3")
@@ -48,7 +48,7 @@ class Ui_CustomersWindow(object):
         font.setPointSize(15)
         self.pushButton.setFont(font)
         icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap("../../../resources/images/icons8-edycja-użytkownika-mężczyzna-30.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon1.addPixmap(QtGui.QPixmap(":/nowyPrzedrostek/images/icons8-edycja-użytkownika-mężczyzna-30.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.pushButton.setIcon(icon1)
         self.pushButton.setIconSize(QtCore.QSize(30, 30))
         self.pushButton.setObjectName("pushButton")
@@ -63,7 +63,7 @@ class Ui_CustomersWindow(object):
         font.setPointSize(15)
         self.pushButton_2.setFont(font)
         icon2 = QtGui.QIcon()
-        icon2.addPixmap(QtGui.QPixmap("../../../resources/images/icons8-usuń-użytkownika-mężczyzna-30.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon2.addPixmap(QtGui.QPixmap(":/nowyPrzedrostek/images/icons8-usuń-użytkownika-mężczyzna-30.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.pushButton_2.setIcon(icon2)
         self.pushButton_2.setIconSize(QtCore.QSize(30, 30))
         self.pushButton_2.setObjectName("pushButton_2")
@@ -79,3 +79,4 @@ class Ui_CustomersWindow(object):
         self.pushButton.setText(_translate("CustomersWindow", "Edytuj"))
         self.pushButton_2.setText(_translate("CustomersWindow", "Usuń"))
 
+import resources_rc

@@ -8,4 +8,4 @@ class ProductsWindow(QWidget, Ui_ProductsWindow):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
-        uic.loadUi("/home/kuba/PycharmProjects/python-invoices/resources/pyqt/products_window.ui")
+        uic.loadUi("pyqt/products_window.ui")

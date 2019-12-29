@@ -8,4 +8,4 @@ class SettingsWindow(QWidget, Ui_SettingsWindow):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
-        uic.loadUi("/home/kuba/PycharmProjects/python-invoices/resources/pyqt/settings_window.ui")
+        uic.loadUi("pyqt/settings_window.ui")

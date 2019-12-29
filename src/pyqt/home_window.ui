@@ -86,8 +86,8 @@
       <string/>
      </property>
      <property name="icon">
-      <iconset>
-       <normaloff>../images/icons8-następny-30.png</normaloff>../images/icons8-następny-30.png</iconset>
+      <iconset resource="../../resources/resources.qrc">
+       <normaloff>:/nowyPrzedrostek/images/icons8-następny-30.png</normaloff>:/nowyPrzedrostek/images/icons8-następny-30.png</iconset>
      </property>
      <property name="iconSize">
       <size>
@@ -114,8 +114,8 @@
       <string>Zapisz wzorzec</string>
      </property>
      <property name="icon">
-      <iconset>
-       <normaloff>../images/icons8-zapisz-30.png</normaloff>../images/icons8-zapisz-30.png</iconset>
+      <iconset resource="../../resources/resources.qrc">
+       <normaloff>:/nowyPrzedrostek/images/icons8-zapisz-30.png</normaloff>:/nowyPrzedrostek/images/icons8-zapisz-30.png</iconset>
      </property>
      <property name="iconSize">
       <size>
@@ -137,8 +137,8 @@
       <string/>
      </property>
      <property name="icon">
-      <iconset>
-       <normaloff>../images/icons8-ostatni-30.png</normaloff>../images/icons8-ostatni-30.png</iconset>
+      <iconset resource="../../resources/resources.qrc">
+       <normaloff>:/nowyPrzedrostek/images/icons8-ostatni-30.png</normaloff>:/nowyPrzedrostek/images/icons8-ostatni-30.png</iconset>
      </property>
      <property name="iconSize">
       <size>
@@ -169,8 +169,8 @@
       <string>Dodaj produkt</string>
      </property>
      <property name="icon">
-      <iconset>
-       <normaloff>../images/icons8-plus-30.png</normaloff>../images/icons8-plus-30.png</iconset>
+      <iconset resource="../../resources/resources.qrc">
+       <normaloff>:/nowyPrzedrostek/images/icons8-plus-30.png</normaloff>:/nowyPrzedrostek/images/icons8-plus-30.png</iconset>
      </property>
      <property name="iconSize">
       <size>
@@ -190,6 +190,13 @@
      <property name="calendarPopup">
       <bool>true</bool>
      </property>
+     <property name="date">
+      <date>
+       <year>2019</year>
+       <month>12</month>
+       <day>29</day>
+      </date>
+     </property>
     </widget>
    </item>
    <item row="0" column="0">
@@ -204,8 +211,8 @@
       <string/>
      </property>
      <property name="icon">
-      <iconset>
-       <normaloff>../images/icons8-pierwszy-30.png</normaloff>../images/icons8-pierwszy-30.png</iconset>
+      <iconset resource="../../resources/resources.qrc">
+       <normaloff>:/nowyPrzedrostek/images/icons8-pierwszy-30.png</normaloff>:/nowyPrzedrostek/images/icons8-pierwszy-30.png</iconset>
      </property>
      <property name="iconSize">
       <size>
@@ -251,8 +258,8 @@
       <string/>
      </property>
      <property name="icon">
-      <iconset>
-       <normaloff>../images/icons8-poprzedni-30.png</normaloff>../images/icons8-poprzedni-30.png</iconset>
+      <iconset resource="../../resources/resources.qrc">
+       <normaloff>:/nowyPrzedrostek/images/icons8-poprzedni-30.png</normaloff>:/nowyPrzedrostek/images/icons8-poprzedni-30.png</iconset>
      </property>
      <property name="iconSize">
       <size>
@@ -282,6 +289,8 @@
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="../../resources/resources.qrc"/>
+ </resources>
  <connections/>
 </ui>

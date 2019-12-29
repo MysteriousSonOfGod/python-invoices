@@ -334,8 +334,8 @@
         <string>Zapisz</string>
        </property>
        <property name="icon">
-        <iconset>
-         <normaloff>../images/icons8-zapisz-30.png</normaloff>../images/icons8-zapisz-30.png</iconset>
+        <iconset resource="../../resources/resources.qrc">
+         <normaloff>:/nowyPrzedrostek/images/icons8-zapisz-30.png</normaloff>:/nowyPrzedrostek/images/icons8-zapisz-30.png</iconset>
        </property>
        <property name="iconSize">
         <size>
@@ -362,8 +362,8 @@
         <string>Anuluj</string>
        </property>
        <property name="icon">
-        <iconset>
-         <normaloff>../images/icons8-anuluj-30.png</normaloff>../images/icons8-anuluj-30.png</iconset>
+        <iconset resource="../../resources/resources.qrc">
+         <normaloff>:/nowyPrzedrostek/images/icons8-anuluj-30.png</normaloff>:/nowyPrzedrostek/images/icons8-anuluj-30.png</iconset>
        </property>
        <property name="iconSize">
         <size>
@@ -390,6 +390,8 @@
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="../../resources/resources.qrc"/>
+ </resources>
  <connections/>
 </ui>

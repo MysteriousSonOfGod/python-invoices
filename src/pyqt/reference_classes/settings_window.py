@@ -208,7 +208,7 @@ class Ui_SettingsWindow(object):
         font.setPointSize(15)
         self.pushButton_2.setFont(font)
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("../../../resources/images/icons8-zapisz-30.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap(":/nowyPrzedrostek/images/icons8-zapisz-30.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.pushButton_2.setIcon(icon)
         self.pushButton_2.setIconSize(QtCore.QSize(30, 30))
         self.pushButton_2.setObjectName("pushButton_2")
@@ -223,7 +223,7 @@ class Ui_SettingsWindow(object):
         font.setPointSize(15)
         self.pushButton.setFont(font)
         icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap("../../../resources/images/icons8-anuluj-30.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon1.addPixmap(QtGui.QPixmap(":/nowyPrzedrostek/images/icons8-anuluj-30.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.pushButton.setIcon(icon1)
         self.pushButton.setIconSize(QtCore.QSize(30, 30))
         self.pushButton.setObjectName("pushButton")
@@ -250,3 +250,4 @@ class Ui_SettingsWindow(object):
         self.pushButton_2.setText(_translate("SettingsWindow", "Zapisz"))
         self.pushButton.setText(_translate("SettingsWindow", "Anuluj"))
 
+import resources_rc

@@ -28,8 +28,8 @@
       <string>Dodaj</string>
      </property>
      <property name="icon">
-      <iconset>
-       <normaloff>../images/icons8-dodaj-produkt-30.png</normaloff>../images/icons8-dodaj-produkt-30.png</iconset>
+      <iconset resource="../../resources/resources.qrc">
+       <normaloff>:/nowyPrzedrostek/images/icons8-dodaj-produkt-30.png</normaloff>:/nowyPrzedrostek/images/icons8-dodaj-produkt-30.png</iconset>
      </property>
      <property name="iconSize">
       <size>
@@ -50,8 +50,8 @@
       <string>Edytuj</string>
      </property>
      <property name="icon">
-      <iconset>
-       <normaloff>../images/icons8-edytuj-produkt-30.png</normaloff>../images/icons8-edytuj-produkt-30.png</iconset>
+      <iconset resource="../../resources/resources.qrc">
+       <normaloff>:/nowyPrzedrostek/images/icons8-edytuj-produkt-30.png</normaloff>:/nowyPrzedrostek/images/icons8-edytuj-produkt-30.png</iconset>
      </property>
      <property name="iconSize">
       <size>
@@ -72,8 +72,8 @@
       <string>Usuń</string>
      </property>
      <property name="icon">
-      <iconset>
-       <normaloff>../images/icons8-usuń-produkt-30.png</normaloff>../images/icons8-usuń-produkt-30.png</iconset>
+      <iconset resource="../../resources/resources.qrc">
+       <normaloff>:/nowyPrzedrostek/images/icons8-usuń-produkt-30.png</normaloff>:/nowyPrzedrostek/images/icons8-usuń-produkt-30.png</iconset>
      </property>
      <property name="iconSize">
       <size>
@@ -85,6 +85,8 @@
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="../../resources/resources.qrc"/>
+ </resources>
  <connections/>
 </ui>

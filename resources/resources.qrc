@@ -1,0 +1,23 @@
+<RCC>
+  <qresource prefix="nowyPrzedrostek">
+    <file>images/icons8-anuluj-30.png</file>
+    <file>images/icons8-clear-symbol-24.png</file>
+    <file>images/icons8-dodaj-produkt-30.png</file>
+    <file>images/icons8-dodaj-użytkownika-mężczyzna-30.png</file>
+    <file>images/icons8-dom-30.png</file>
+    <file>images/icons8-drukuj-30.png</file>
+    <file>images/icons8-edycja-użytkownika-mężczyzna-30.png</file>
+    <file>images/icons8-edytuj-produkt-30.png</file>
+    <file>images/icons8-grupy-użytkownika-mężczyzna-mężczyzna-30.png</file>
+    <file>images/icons8-następny-30.png</file>
+    <file>images/icons8-ostatni-30.png</file>
+    <file>images/icons8-pierwszy-30.png</file>
+    <file>images/icons8-plus-30.png</file>
+    <file>images/icons8-poprzedni-30.png</file>
+    <file>images/icons8-produkt-30.png</file>
+    <file>images/icons8-usługi-30.png</file>
+    <file>images/icons8-usuń-produkt-30.png</file>
+    <file>images/icons8-usuń-użytkownika-mężczyzna-30.png</file>
+    <file>images/icons8-zapisz-30.png</file>
+  </qresource>
+</RCC>

@@ -8,4 +8,4 @@ class HomeWindow(QWidget, Ui_HomeWindow):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
-        uic.loadUi("/home/kuba/PycharmProjects/python-invoices/resources/pyqt/home_window.ui")
+        uic.loadUi("pyqt/home_window.ui")
