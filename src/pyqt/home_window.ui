@@ -20,17 +20,7 @@
    <string>Form</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="1" column="0" rowspan="5" colspan="4">
-    <widget class="QListView" name="listView">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-    </widget>
-   </item>
-   <item row="4" column="7">
+   <item row="2" column="7">
     <widget class="QLabel" name="label_3">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
@@ -50,8 +40,15 @@
      </property>
     </widget>
    </item>
-   <item row="1" column="7" rowspan="3" colspan="5">
-    <widget class="QTableView" name="tableView"/>
+   <item row="1" column="0" rowspan="3" colspan="4">
+    <widget class="QListView" name="listView">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+    </widget>
    </item>
    <item row="0" column="7">
     <widget class="QLabel" name="label">
@@ -97,7 +94,7 @@
      </property>
     </widget>
    </item>
-   <item row="5" column="8">
+   <item row="3" column="8">
     <widget class="QPushButton" name="pushButton_5">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Minimum" vsizetype="Maximum">
@@ -125,6 +122,29 @@
      </property>
     </widget>
    </item>
+   <item row="0" column="0">
+    <widget class="QPushButton" name="pushButton">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset resource="../../resources/resources.qrc">
+       <normaloff>:/nowyPrzedrostek/images/icons8-pierwszy-30.png</normaloff>:/nowyPrzedrostek/images/icons8-pierwszy-30.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>40</width>
+       <height>40</height>
+      </size>
+     </property>
+    </widget>
+   </item>
    <item row="0" column="3">
     <widget class="QPushButton" name="pushButton_4">
      <property name="sizePolicy">
@@ -148,7 +168,7 @@
      </property>
     </widget>
    </item>
-   <item row="5" column="7">
+   <item row="3" column="7">
     <widget class="QPushButton" name="pushButton_6">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Minimum" vsizetype="Maximum">
@@ -180,49 +200,7 @@
      </property>
     </widget>
    </item>
-   <item row="0" column="11">
-    <widget class="QDateEdit" name="dateEdit">
-     <property name="font">
-      <font>
-       <pointsize>15</pointsize>
-      </font>
-     </property>
-     <property name="calendarPopup">
-      <bool>true</bool>
-     </property>
-     <property name="date">
-      <date>
-       <year>2019</year>
-       <month>12</month>
-       <day>29</day>
-      </date>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="0">
-    <widget class="QPushButton" name="pushButton">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-     <property name="icon">
-      <iconset resource="../../resources/resources.qrc">
-       <normaloff>:/nowyPrzedrostek/images/icons8-pierwszy-30.png</normaloff>:/nowyPrzedrostek/images/icons8-pierwszy-30.png</iconset>
-     </property>
-     <property name="iconSize">
-      <size>
-       <width>40</width>
-       <height>40</height>
-      </size>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="10">
+   <item row="0" column="9">
     <widget class="QLabel" name="label_2">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
@@ -243,6 +221,25 @@
      </property>
      <property name="alignment">
       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="10">
+    <widget class="QDateEdit" name="dateEdit">
+     <property name="font">
+      <font>
+       <pointsize>15</pointsize>
+      </font>
+     </property>
+     <property name="calendarPopup">
+      <bool>true</bool>
+     </property>
+     <property name="date">
+      <date>
+       <year>2019</year>
+       <month>12</month>
+       <day>29</day>
+      </date>
      </property>
     </widget>
    </item>
@@ -269,7 +266,7 @@
      </property>
     </widget>
    </item>
-   <item row="4" column="8" colspan="4">
+   <item row="2" column="8" colspan="3">
     <widget class="QLabel" name="label_4">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
@@ -285,6 +282,192 @@
      <property name="text">
       <string>TextLabel</string>
      </property>
+    </widget>
+   </item>
+   <item row="1" column="7" colspan="4">
+    <widget class="QTableWidget" name="tableWidget">
+     <property name="font">
+      <font>
+       <pointsize>15</pointsize>
+      </font>
+     </property>
+     <property name="alternatingRowColors">
+      <bool>true</bool>
+     </property>
+     <property name="selectionMode">
+      <enum>QAbstractItemView::SingleSelection</enum>
+     </property>
+     <property name="selectionBehavior">
+      <enum>QAbstractItemView::SelectRows</enum>
+     </property>
+     <property name="textElideMode">
+      <enum>Qt::ElideNone</enum>
+     </property>
+     <property name="sortingEnabled">
+      <bool>false</bool>
+     </property>
+     <property name="columnCount">
+      <number>9</number>
+     </property>
+     <attribute name="horizontalHeaderCascadingSectionResizes">
+      <bool>false</bool>
+     </attribute>
+     <attribute name="horizontalHeaderDefaultSectionSize">
+      <number>121</number>
+     </attribute>
+     <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
+      <bool>false</bool>
+     </attribute>
+     <attribute name="horizontalHeaderStretchLastSection">
+      <bool>false</bool>
+     </attribute>
+     <attribute name="verticalHeaderCascadingSectionResizes">
+      <bool>false</bool>
+     </attribute>
+     <attribute name="verticalHeaderShowSortIndicator" stdset="0">
+      <bool>false</bool>
+     </attribute>
+     <attribute name="verticalHeaderStretchLastSection">
+      <bool>false</bool>
+     </attribute>
+     <column>
+      <property name="text">
+       <string>Nazwa</string>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>15</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Symbol</string>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>15</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="textAlignment">
+       <set>AlignCenter</set>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>j. m.</string>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>15</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+        <kerning>true</kerning>
+       </font>
+      </property>
+      <property name="textAlignment">
+       <set>AlignCenter</set>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Cena
+netto [zł]</string>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>15</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="textAlignment">
+       <set>AlignCenter</set>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Ilość</string>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>15</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="textAlignment">
+       <set>AlignCenter</set>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Wartość
+netto [zł]</string>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>15</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="textAlignment">
+       <set>AlignCenter</set>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Stawka
+VAT [%]</string>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>15</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="textAlignment">
+       <set>AlignCenter</set>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Wartość
+VAT [zł]</string>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>15</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="textAlignment">
+       <set>AlignCenter</set>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Wartość
+brutto [zł]</string>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>15</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="textAlignment">
+       <set>AlignCenter</set>
+      </property>
+     </column>
     </widget>
    </item>
   </layout>
