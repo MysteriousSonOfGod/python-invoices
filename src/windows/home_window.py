@@ -23,7 +23,7 @@ class HomeWindow(QWidget, Ui_HomeWindow):
     def display_data(self):
         session = data.Session()
         try:
-            pass
+            employees = session.query(data.Customer)
         except exc.IntegrityError as errmsg:
             print(errmsg)
             session.rollback()
