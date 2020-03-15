@@ -1,5 +1,6 @@
 from PyQt5.QtWidgets import QMainWindow
 
+from database import data
 from pyqt.reference_classes.main_window import Ui_MainWindow
 from PyQt5 import QtCore
 
@@ -30,7 +31,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     @QtCore.pyqtSlot()
     def switch_to_customers(self):
-        customers_win = CustomersWindow()
+        session = data.Session()
+        customers_win = CustomersWindow(session)
         self.setCentralWidget(customers_win)
 
     @QtCore.pyqtSlot()
