@@ -8,4 +8,3 @@ class ProductsWindow(QWidget, Ui_ProductsWindow):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
-        uic.loadUi("pyqt/products_window.ui")

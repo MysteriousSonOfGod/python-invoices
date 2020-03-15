@@ -7,11 +7,9 @@ from pyqt.reference_classes.customers_window import Ui_CustomersWindow
 
 
 class CustomersWindow(QWidget, Ui_CustomersWindow):
-    def __init__(self, session):
+    def __init__(self):
         super().__init__()
-        self.session = session
         self.setupUi(self)
-        uic.loadUi("pyqt/customers_window.ui")
         self.sti = QStandardItemModel()
         self.fill_table()
         self.customersTableView.setModel(self.sti)
@@ -35,8 +33,10 @@ class CustomersWindow(QWidget, Ui_CustomersWindow):
 
     def fill_table(self):
         self.sti.clear()
-        for cust in self.session.query(data.Customer):
+        session = data.Session()
+        for cust in session.query(data.Customer):
             self.add_new_row(cust)
+        session.close()
 
     def add_new_row(self, customer):
         self.sti.appendRow([
@@ -53,10 +53,42 @@ class CustomersWindow(QWidget, Ui_CustomersWindow):
 
     @QtCore.pyqtSlot()
     def add_customer(self):
+        # session = data.Session()
+        # try:
+        #     reg_employee_window = employee.RegisterEmployee(session)
+        #     if reg_employee_window.exec_() == QDialog.Accepted:
+        #         session.commit()
+        #         QMessageBox.information(
+        #             self, 'Уведомление',
+        #             'Сотрудник успешно добавлен'
+        #         )
+        #         QApplication.setOverrideCursor(Qt.WaitCursor)
+        #         self.employee_table.set_filter_comboboxes()
+        #         self.employee_table.fill_table()
+        #         self.pcs_table.update_table_content()
+        #         QApplication.restoreOverrideCursor()
+        #         print("Закоммитили")
+        # except exc.IntegrityError as errmsg:
+        #     print(errmsg)
+        #     session.rollback()
+        #     msg = QMessageBox()
+        #     msg.setIcon(QMessageBox.Critical)
+        #     msg.setText("Критическая ошибка базы данных")
+        #     msg.setWindowTitle("Критическая ошибка")
+        #     msg.setDetailedText(errmsg)
+        #     msg.setStandardButtons(QMessageBox.Ok)
+        #     msg.buttonClicked.connect(sys.exit)
+        # else:
+        #     print('Все успешно')
+        # finally:
+        #     session.close()
         pass
 
     @QtCore.pyqtSlot()
     def edit_customer(self):
+        #
+        #
+        #
         pass
 
     @QtCore.pyqtSlot()
