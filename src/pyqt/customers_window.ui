@@ -15,7 +15,7 @@
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0">
-    <widget class="QPushButton" name="pushButton_3">
+    <widget class="QPushButton" name="add_customer_btn">
      <property name="enabled">
       <bool>true</bool>
      </property>
@@ -46,7 +46,7 @@
     </widget>
    </item>
    <item row="0" column="1">
-    <widget class="QPushButton" name="pushButton">
+    <widget class="QPushButton" name="edit_customer_btn">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
        <horstretch>0</horstretch>
@@ -74,7 +74,7 @@
     </widget>
    </item>
    <item row="0" column="2">
-    <widget class="QPushButton" name="pushButton_2">
+    <widget class="QPushButton" name="delete_customer_bnt">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
        <horstretch>0</horstretch>
@@ -144,5 +144,59 @@
  <resources>
   <include location="../../resources/resources.qrc"/>
  </resources>
- <connections/>
+ <connections>
+  <connection>
+   <sender>add_customer_btn</sender>
+   <signal>clicked()</signal>
+   <receiver>CustomersWindow</receiver>
+   <slot>add_customer()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>117</x>
+     <y>23</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>682</x>
+     <y>348</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>delete_customer_bnt</sender>
+   <signal>clicked()</signal>
+   <receiver>CustomersWindow</receiver>
+   <slot>delete_customer()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>569</x>
+     <y>23</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>682</x>
+     <y>348</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>edit_customer_btn</sender>
+   <signal>clicked()</signal>
+   <receiver>CustomersWindow</receiver>
+   <slot>edit_custome()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>343</x>
+     <y>23</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>682</x>
+     <y>348</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>add_customer()</slot>
+  <slot>edit_custome()</slot>
+  <slot>delete_customer()</slot>
+ </slots>
 </ui>

@@ -1,4 +1,4 @@
-from PyQt5 import uic, QtWidgets
+from PyQt5 import uic, QtWidgets, QtCore
 from PyQt5.QtGui import QStandardItemModel, QStandardItem, QFont
 from PyQt5.QtWidgets import QWidget
 
@@ -50,3 +50,15 @@ class CustomersWindow(QWidget, Ui_CustomersWindow):
             QStandardItem(customer.city),
             QStandardItem(customer.payment)
         ])
+
+    @QtCore.pyqtSlot()
+    def add_customer(self):
+        pass
+
+    @QtCore.pyqtSlot()
+    def edit_customer(self):
+        pass
+
+    @QtCore.pyqtSlot()
+    def delete_customer(self):
+        pass
