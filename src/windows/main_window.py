@@ -14,15 +14,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
-        self._setup_buttons()
         self.switch_to_homepage()
         self.show()
-
-    def _setup_buttons(self):
-        self.main_page_action.triggered.connect(self.switch_to_homepage)
-        self.customers_action.triggered.connect(self.switch_to_customers)
-        self.products_action.triggered.connect(self.switch_to_products)
-        self.settings_action.triggered.connect(self.switch_do_settings)
 
     @QtCore.pyqtSlot()
     def switch_to_homepage(self):

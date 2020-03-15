@@ -80,6 +80,10 @@ class Ui_MainWindow(object):
         self.toolBar.addAction(self.settings_action)
 
         self.retranslateUi(MainWindow)
+        self.main_page_action.triggered.connect(MainWindow.switch_to_homepage)
+        self.customers_action.triggered.connect(MainWindow.switch_to_customers)
+        self.products_action.triggered.connect(MainWindow.switch_to_products)
+        self.settings_action.triggered.connect(MainWindow.switch_do_settings)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):

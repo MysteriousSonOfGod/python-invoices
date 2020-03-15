@@ -154,5 +154,76 @@
  <resources>
   <include location="../../resources/resources.qrc"/>
  </resources>
- <connections/>
+ <connections>
+  <connection>
+   <sender>main_page_action</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>switch_to_homepage()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>682</x>
+     <y>383</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>customers_action</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>switch_to_customers()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>682</x>
+     <y>383</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>products_action</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>switch_to_products()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>682</x>
+     <y>383</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>settings_action</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>switch_do_settings()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>682</x>
+     <y>383</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>switch_to_homepage()</slot>
+  <slot>switch_to_customers()</slot>
+  <slot>switch_to_products()</slot>
+  <slot>switch_do_settings()</slot>
+ </slots>
 </ui>
