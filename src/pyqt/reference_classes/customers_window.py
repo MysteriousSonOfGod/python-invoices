@@ -82,6 +82,9 @@ class Ui_CustomersWindow(object):
         self.gridLayout.addWidget(self.customersTableView, 2, 0, 1, 6)
 
         self.retranslateUi(CustomersWindow)
+        self.edit_customer_btn.clicked.connect(CustomersWindow.edit_customer)
+        self.delete_customer_bnt.clicked.connect(CustomersWindow.delete_customer)
+        self.add_customer_btn.clicked.connect(CustomersWindow.add_customer)
         QtCore.QMetaObject.connectSlotsByName(CustomersWindow)
 
     def retranslateUi(self, CustomersWindow):

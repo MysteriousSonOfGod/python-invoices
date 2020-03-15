@@ -146,13 +146,13 @@
  </resources>
  <connections>
   <connection>
-   <sender>add_customer_btn</sender>
+   <sender>edit_customer_btn</sender>
    <signal>clicked()</signal>
    <receiver>CustomersWindow</receiver>
-   <slot>add_customer()</slot>
+   <slot>edit_customer()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>117</x>
+     <x>343</x>
      <y>23</y>
     </hint>
     <hint type="destinationlabel">
@@ -178,13 +178,13 @@
    </hints>
   </connection>
   <connection>
-   <sender>edit_customer_btn</sender>
+   <sender>add_customer_btn</sender>
    <signal>clicked()</signal>
    <receiver>CustomersWindow</receiver>
-   <slot>edit_custome()</slot>
+   <slot>add_customer()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>343</x>
+     <x>117</x>
      <y>23</y>
     </hint>
     <hint type="destinationlabel">
@@ -196,7 +196,7 @@
  </connections>
  <slots>
   <slot>add_customer()</slot>
-  <slot>edit_custome()</slot>
+  <slot>edit_customer()</slot>
   <slot>delete_customer()</slot>
  </slots>
 </ui>
