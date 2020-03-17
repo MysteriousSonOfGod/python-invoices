@@ -1,8 +1,12 @@
+import sys
+
 from PyQt5 import uic, QtWidgets, QtCore
 from PyQt5.QtGui import QStandardItemModel, QStandardItem, QFont
-from PyQt5.QtWidgets import QWidget
+from PyQt5.QtWidgets import QWidget, QDialog, QMessageBox, QApplication
+from sqlalchemy import exc
 
 from database import data
+from dialogs.customer_dialog import CustomersDialog
 from pyqt.reference_classes.customers_window import Ui_CustomersWindow
 
 
@@ -34,7 +38,7 @@ class CustomersWindow(QWidget, Ui_CustomersWindow):
     def fill_table(self):
         self.sti.clear()
         session = data.Session()
-        for cust in session.query(data.Customer):
+        for cust in session.query(data.Customer).all():
             self.add_new_row(cust)
         session.close()
 
@@ -53,36 +57,29 @@ class CustomersWindow(QWidget, Ui_CustomersWindow):
 
     @QtCore.pyqtSlot()
     def add_customer(self):
-        # session = data.Session()
-        # try:
-        #     reg_employee_window = employee.RegisterEmployee(session)
-        #     if reg_employee_window.exec_() == QDialog.Accepted:
-        #         session.commit()
-        #         QMessageBox.information(
-        #             self, 'Уведомление',
-        #             'Сотрудник успешно добавлен'
-        #         )
-        #         QApplication.setOverrideCursor(Qt.WaitCursor)
-        #         self.employee_table.set_filter_comboboxes()
-        #         self.employee_table.fill_table()
-        #         self.pcs_table.update_table_content()
-        #         QApplication.restoreOverrideCursor()
-        #         print("Закоммитили")
-        # except exc.IntegrityError as errmsg:
-        #     print(errmsg)
-        #     session.rollback()
-        #     msg = QMessageBox()
-        #     msg.setIcon(QMessageBox.Critical)
-        #     msg.setText("Критическая ошибка базы данных")
-        #     msg.setWindowTitle("Критическая ошибка")
-        #     msg.setDetailedText(errmsg)
-        #     msg.setStandardButtons(QMessageBox.Ok)
-        #     msg.buttonClicked.connect(sys.exit)
-        # else:
-        #     print('Все успешно')
-        # finally:
-        #     session.close()
-        pass
+        session = data.Session()
+        try:
+            customers_dialog = CustomersDialog(session)
+            if customers_dialog.exec_() == QDialog.Accepted:
+                session.commit()
+                QApplication.setOverrideCursor(QtCore.Qt.WaitCursor)
+                self.fill_table()
+                self.build_table()
+                QApplication.restoreOverrideCursor()
+        except exc.IntegrityError as errmsg:
+            print(errmsg)
+            session.rollback()
+            msg = QMessageBox()
+            msg.setIcon(QMessageBox.Critical)
+            msg.setText("Krytyczny błąd bazy danych")
+            msg.setWindowTitle("Błąd krytyczny")
+            msg.setDetailedText(errmsg)
+            msg.setStandardButtons(QMessageBox.Ok)
+            msg.buttonClicked.connect(sys.exit)
+        else:
+            print('Operacja pomyślna')
+        finally:
+            session.close()
 
     @QtCore.pyqtSlot()
     def edit_customer(self):

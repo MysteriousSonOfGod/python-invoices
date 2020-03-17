@@ -74,6 +74,7 @@ class Ui_CustomersWindow(object):
         self.customersTableView.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
         self.customersTableView.setAlternatingRowColors(True)
         self.customersTableView.setSelectionMode(QtWidgets.QAbstractItemView.SingleSelection)
+        self.customersTableView.setSelectionBehavior(QtWidgets.QAbstractItemView.SelectRows)
         self.customersTableView.setTextElideMode(QtCore.Qt.ElideNone)
         self.customersTableView.setSortingEnabled(True)
         self.customersTableView.setObjectName("customersTableView")
