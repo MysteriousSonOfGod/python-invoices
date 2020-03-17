@@ -74,6 +74,8 @@ class CustomersDialog(QDialog, Ui_CustomerDialog):
         )
 
         customer.template = data.Template(customer_id=customer.id)
+        self.session.add(customer)
+        self.session.commit()
         QMessageBox.information(
             self, 'Informacja',
             'Kontrahent dodany pomyślnie'

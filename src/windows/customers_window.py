@@ -61,7 +61,6 @@ class CustomersWindow(QWidget, Ui_CustomersWindow):
         try:
             customers_dialog = CustomersDialog(session)
             if customers_dialog.exec_() == QDialog.Accepted:
-                session.commit()
                 QApplication.setOverrideCursor(QtCore.Qt.WaitCursor)
                 self.fill_table()
                 self.build_table()
