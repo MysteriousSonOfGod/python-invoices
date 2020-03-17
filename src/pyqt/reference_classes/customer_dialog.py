@@ -135,7 +135,7 @@ class Ui_CustomerDialog(object):
         self.formLayout.setWidget(15, QtWidgets.QFormLayout.LabelRole, self.city_lbl)
         self.city_line_edit = QtWidgets.QLineEdit(CustomerDialog)
         font = QtGui.QFont()
-        font.setFamily("aakar")
+        font.setFamily("Sans Serif")
         font.setPointSize(16)
         self.city_line_edit.setFont(font)
         self.city_line_edit.setObjectName("city_line_edit")

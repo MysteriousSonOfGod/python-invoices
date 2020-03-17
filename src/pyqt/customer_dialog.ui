@@ -228,7 +228,7 @@
       <widget class="QLineEdit" name="city_line_edit">
        <property name="font">
         <font>
-         <family>aakar</family>
+         <family>Sans Serif</family>
          <pointsize>16</pointsize>
         </font>
        </property>
