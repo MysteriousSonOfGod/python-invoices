@@ -129,7 +129,7 @@
       <enum>QAbstractItemView::SelectRows</enum>
      </property>
      <property name="textElideMode">
-      <enum>Qt::ElideNone</enum>
+      <enum>Qt::ElideLeft</enum>
      </property>
      <property name="sortingEnabled">
       <bool>true</bool>
@@ -138,7 +138,7 @@
       <bool>false</bool>
      </attribute>
      <attribute name="verticalHeaderStretchLastSection">
-      <bool>true</bool>
+      <bool>false</bool>
      </attribute>
     </widget>
    </item>

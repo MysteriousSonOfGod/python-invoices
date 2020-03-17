@@ -75,11 +75,11 @@ class Ui_CustomersWindow(object):
         self.customersTableView.setAlternatingRowColors(True)
         self.customersTableView.setSelectionMode(QtWidgets.QAbstractItemView.SingleSelection)
         self.customersTableView.setSelectionBehavior(QtWidgets.QAbstractItemView.SelectRows)
-        self.customersTableView.setTextElideMode(QtCore.Qt.ElideNone)
+        self.customersTableView.setTextElideMode(QtCore.Qt.ElideLeft)
         self.customersTableView.setSortingEnabled(True)
         self.customersTableView.setObjectName("customersTableView")
         self.customersTableView.horizontalHeader().setCascadingSectionResizes(False)
-        self.customersTableView.verticalHeader().setStretchLastSection(True)
+        self.customersTableView.verticalHeader().setStretchLastSection(False)
         self.gridLayout.addWidget(self.customersTableView, 2, 0, 1, 6)
 
         self.retranslateUi(CustomersWindow)

@@ -17,6 +17,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.switch_to_homepage()
         self.show()
 
+    # https://stackoverflow.com/a/8958404/4671908
     @QtCore.pyqtSlot()
     def switch_to_homepage(self):
         home_win = HomeWindow()
@@ -24,8 +25,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     @QtCore.pyqtSlot()
     def switch_to_customers(self):
-        session = data.Session()
-        customers_win = CustomersWindow(session)
+        customers_win = CustomersWindow()
         self.setCentralWidget(customers_win)
 
     @QtCore.pyqtSlot()
