@@ -9,13 +9,7 @@ from sqlalchemy.orm import relationship, sessionmaker
 # decimal operations settings
 getcontext().prec = 6
 getcontext().rounding = ROUND_HALF_UP
-
-engine = create_engine('sqlite:///invoices.db')
 Base = declarative_base()
-
-# Create a session to handle updates.
-Session = sessionmaker(bind=engine)
-
 
 # customer has a one-to-one relationship with template, where customer is the parent
 class Customer(Base):
@@ -40,8 +34,8 @@ class Product(Base):
     product_name = Column(String, nullable=False)
     symbol = Column(String)
     unit = Column(String, nullable=False)
-    unit_net_price = Column(Numeric, nullable=False)
-    vat_rate = Column(Numeric, nullable=False)
+    unit_net_price = Column(Numeric(precision=2), nullable=False)
+    vat_rate = Column(Numeric(precision=2), nullable=False)
     per_month = Column(Boolean, nullable=False)
 
 
@@ -76,11 +70,13 @@ class Template(Base):
     customer_id = Column(Integer, ForeignKey(Customer.id))
     products = relationship("Product", secondary=association_table)
     quantity = Column(Numeric)
-    net_val = Column(Numeric)
-    tax_val = Column(Numeric)
-    gross_val = Column(Numeric)
+    net_val = Column(Numeric(precision=2))
+    tax_val = Column(Numeric(precision=2))
+    gross_val = Column(Numeric(precision=2))
 
-    def __init__(self):
+    def __init__(self, customer_id):
+        self.customer_id = customer_id
+        self.products = []
         self.quantity = Decimal(0.0)
         self.net_val = Decimal(0.0)
         self.tax_val = Decimal(0.0)
@@ -98,5 +94,9 @@ def quantity_listener(target, value, oldvalue, initiator):
     # target.tax_val =
     # target.gross_val =
 
+engine = create_engine('sqlite:///invoices.db')
+
+# Create a session to handle updates.
+Session = sessionmaker(bind=engine)
 # Initalize the database if it is not already.
 Base.metadata.create_all(engine)
