@@ -38,7 +38,7 @@ class CustomersWindow(QWidget, Ui_CustomersWindow):
     def fill_table(self):
         self.sti.clear()
         session = data.Session()
-        for cust in session.query(data.Customer).all():
+        for cust in session.query(data.Customer):
             self.add_new_row(cust)
         session.close()
 
@@ -52,7 +52,7 @@ class CustomersWindow(QWidget, Ui_CustomersWindow):
             QStandardItem(customer.address),
             QStandardItem(customer.postal_code),
             QStandardItem(customer.city),
-            QStandardItem(customer.payment)
+            QStandardItem("Gotówka" if customer.payment else "Przelew")
         ])
 
     @QtCore.pyqtSlot()
