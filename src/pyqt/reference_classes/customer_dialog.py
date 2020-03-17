@@ -11,10 +11,12 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_CustomerDialog(object):
     def setupUi(self, CustomerDialog):
         CustomerDialog.setObjectName("CustomerDialog")
-        CustomerDialog.resize(800, 503)
+        CustomerDialog.resize(800, 383)
+        CustomerDialog.setModal(True)
         self.verticalLayout = QtWidgets.QVBoxLayout(CustomerDialog)
         self.verticalLayout.setObjectName("verticalLayout")
         self.formLayout = QtWidgets.QFormLayout()
+        self.formLayout.setSizeConstraint(QtWidgets.QLayout.SetDefaultConstraint)
         self.formLayout.setObjectName("formLayout")
         self.alias_lbl = QtWidgets.QLabel(CustomerDialog)
         font = QtGui.QFont()
@@ -119,6 +121,7 @@ class Ui_CustomerDialog(object):
         font = QtGui.QFont()
         font.setPointSize(16)
         self.postalcode_line_edit.setFont(font)
+        self.postalcode_line_edit.setInputMask("")
         self.postalcode_line_edit.setObjectName("postalcode_line_edit")
         self.formLayout.setWidget(14, QtWidgets.QFormLayout.FieldRole, self.postalcode_line_edit)
         self.city_lbl = QtWidgets.QLabel(CustomerDialog)
@@ -153,6 +156,7 @@ class Ui_CustomerDialog(object):
         font.setPointSize(16)
         self.cash_radio_btn.setFont(font)
         self.cash_radio_btn.setIconSize(QtCore.QSize(25, 17))
+        self.cash_radio_btn.setChecked(True)
         self.cash_radio_btn.setObjectName("cash_radio_btn")
         self.horizontalLayout_2.addWidget(self.cash_radio_btn)
         self.bank_transfer_radio_btn = QtWidgets.QRadioButton(CustomerDialog)
@@ -177,6 +181,7 @@ class Ui_CustomerDialog(object):
         self.retranslateUi(CustomerDialog)
         self.buttonBox.accepted.connect(CustomerDialog.accept)
         self.buttonBox.rejected.connect(CustomerDialog.reject)
+        self.buttonBox.accepted.connect(CustomerDialog._validate_input)
         QtCore.QMetaObject.connectSlotsByName(CustomerDialog)
 
     def retranslateUi(self, CustomerDialog):
