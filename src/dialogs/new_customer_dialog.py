@@ -9,35 +9,7 @@ class NewCustomerDialog(CustomersDialog):
     def __init__(self, session):
         super().__init__(session)
 
-    def _validate_input(self):
-        if not self.address_line_edit.text() \
-                or not self.alias_line_edit.text() \
-                or not self.taxid_line_edit.text():
-            QMessageBox.warning(
-                self, "Wymagane pola są puste",
-                ("Jedno z wymaganych pól jest puste:\n\n"
-                 "Nazwa\nAdres\nNIP/PESEL")
-            )
-            return
-
-        # alias check
-        stmt = self.session.query(data.Customer).filter(data.Customer.alias == self.alias_line_edit.text())
-        # TODO: spróbować alternatywnego sposobu
-        # https://stackoverflow.com/questions/7646173/sqlalchemy-exists-for-query
-        if self.session.query(stmt.exists()).scalar():
-            QMessageBox.warning(
-                self, "Duplikat",
-                "Kontrahent o takiej nazwie już istnieje!"
-            )
-            return
-
-        # if we won't click OK button
-        if not self.accept():
-            self.session.rollback()
-
-        self._insert_data()
-
-    def _insert_data(self):
+    def _commit_to_database(self):
         QApplication.setOverrideCursor(QtCore.Qt.WaitCursor)
         customer = data.Customer(
             alias=self.alias_line_edit.text(),

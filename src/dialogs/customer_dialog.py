@@ -3,8 +3,9 @@ from abc import abstractmethod
 from PyQt5 import QtCore
 from PyQt5.QtCore import QRegularExpression
 from PyQt5.QtGui import QRegularExpressionValidator
-from PyQt5.QtWidgets import QDialog
+from PyQt5.QtWidgets import QDialog, QMessageBox
 
+from database import data
 from pyqt.reference_classes.customer_dialog import Ui_CustomerDialog
 
 
@@ -33,6 +34,30 @@ class CustomersDialog(QDialog, Ui_CustomerDialog):
         )))
 
     @QtCore.pyqtSlot()
-    @abstractmethod
     def _validate_input(self):
+        if not self.address_line_edit.text() \
+                or not self.alias_line_edit.text() \
+                or not self.taxid_line_edit.text():
+            QMessageBox.warning(
+                self, "Wymagane pola są puste",
+                ("Jedno z wymaganych pól jest puste:\n\n"
+                 "Nazwa\nAdres\nNIP/PESEL")
+            )
+            return
+
+        # alias check
+        stmt = self.session.query(data.Customer).filter(data.Customer.alias == self.alias_line_edit.text())
+        # TODO: spróbować alternatywnego sposobu
+        # https://stackoverflow.com/questions/7646173/sqlalchemy-exists-for-query
+        if self.session.query(stmt.exists()).scalar():
+            QMessageBox.warning(
+                self, "Duplikat",
+                "Kontrahent o takiej nazwie już istnieje!"
+            )
+            return
+
+        self._commit_to_database()
+
+    @abstractmethod
+    def _commit_to_database(self):
         ...
