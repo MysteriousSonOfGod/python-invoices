@@ -55,6 +55,10 @@ class CustomersWindow(QWidget, Ui_CustomersWindow):
             QStandardItem("Gotówka" if customer.payment else "Przelew")
         ])
 
+    def _refresh_table(self):
+        self.fill_table()
+        self.build_table()
+
     @QtCore.pyqtSlot()
     def add_customer(self):
         session = data.Session()
@@ -62,8 +66,7 @@ class CustomersWindow(QWidget, Ui_CustomersWindow):
             customers_dialog = CustomersDialog(session)
             if customers_dialog.exec_() == QDialog.Accepted:
                 QApplication.setOverrideCursor(QtCore.Qt.WaitCursor)
-                self.fill_table()
-                self.build_table()
+                self._refresh_table()
                 QApplication.restoreOverrideCursor()
         except exc.IntegrityError as errmsg:
             print(errmsg)
@@ -82,11 +85,37 @@ class CustomersWindow(QWidget, Ui_CustomersWindow):
 
     @QtCore.pyqtSlot()
     def edit_customer(self):
-        #
-        #
-        #
         pass
 
     @QtCore.pyqtSlot()
     def delete_customer(self):
-        pass
+        msg_box = QMessageBox(self)
+        msg_box.setIcon(QMessageBox.Question)
+        msg_box.setWindowTitle('Informacja')
+        msg_box.setText('Na pewno usunąć kontrahenta?')
+        msg_box.setStandardButtons(QMessageBox.Yes | QMessageBox.No)
+        buttonY = msg_box.button(QMessageBox.Yes)
+        buttonY.setText('Tak')
+        buttonN = msg_box.button(QMessageBox.No)
+        buttonN.setText('Nie')
+        msg_box.exec_()
+
+        if msg_box.clickedButton() == buttonY:
+            session = data.Session()
+            element = self.customersTableView.selectionModel().selectedIndexes()
+            try:
+                c = session.query(data.Customer).filter_by(alias=element[0].data()).one()
+                session.delete(c)
+                session.commit()
+                QMessageBox.information(
+                    self, 'Informacja',
+                    'Kontrahent usunięty'
+                )
+                self._refresh_table()
+            except Exception:
+                QMessageBox.warning(
+                    self, 'Błąd',
+                    'Nieznany błąd'
+                )
+            finally:
+                session.close()
