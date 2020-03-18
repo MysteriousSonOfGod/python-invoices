@@ -13,6 +13,7 @@ class CustomersDialog(QDialog, Ui_CustomerDialog):
         super().__init__()
         self.setupUi(self)
         self.session = session
+        self._init_line_edits()
 
     def _init_line_edits(self):
         self.name_line_edit.setValidator(QRegularExpressionValidator(QRegularExpression(
