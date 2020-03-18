@@ -43,7 +43,7 @@ class CustomersDialog(QDialog, Ui_CustomerDialog):
             return
 
         # alias check
-        stmt = self.session.query(data.Customer).filter(data.Customer.alias == self.alias_line_edit.text())
+        stmt = self.session.query(data.Customer).filter_by(alias = self.alias_line_edit.text())
         # TODO: spróbować alternatywnego sposobu
         # https://stackoverflow.com/questions/7646173/sqlalchemy-exists-for-query
         if self.session.query(stmt.exists()).scalar():
@@ -53,11 +53,11 @@ class CustomersDialog(QDialog, Ui_CustomerDialog):
             )
             return
 
-        self._insert_data()
-
         # if we won't click OK button
         if not self.accept():
             self.session.rollback()
+
+        self._insert_data()
 
     def _insert_data(self):
         QApplication.setOverrideCursor(QtCore.Qt.WaitCursor)
