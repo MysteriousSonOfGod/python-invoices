@@ -6,7 +6,7 @@ from PyQt5.QtWidgets import QWidget, QDialog, QMessageBox, QApplication
 from sqlalchemy import exc
 
 from database import data
-from dialogs.customer_dialog import CustomersDialog
+from dialogs.new_customer_dialog import NewCustomerDialog
 from pyqt.reference_classes.customers_window import Ui_CustomersWindow
 
 
@@ -63,7 +63,7 @@ class CustomersWindow(QWidget, Ui_CustomersWindow):
     def add_customer(self):
         session = data.Session()
         try:
-            customers_dialog = CustomersDialog(session)
+            customers_dialog = NewCustomerDialog(session)
             if customers_dialog.exec_() == QDialog.Accepted:
                 QApplication.setOverrideCursor(QtCore.Qt.WaitCursor)
                 self._refresh_table()
@@ -104,7 +104,7 @@ class CustomersWindow(QWidget, Ui_CustomersWindow):
             session = data.Session()
             element = self.customersTableView.selectionModel().selectedIndexes()
             try:
-                c = session.query(data.Customer).filter_by(alias=element[0].data()).one()
+                c = session.query(data.Customer).filter(data.Customer.alias == element[0].data()).one()
                 session.delete(c)
                 session.commit()
                 QMessageBox.information(
