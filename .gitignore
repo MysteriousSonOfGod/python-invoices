@@ -270,5 +270,10 @@ compile_commands.json
 
 # Qt Creator backups
 
-# End of https://www.gitignore.io/api/qt,python,qtcreator,pycharm+all
+### Database ###
+*.accdb
 *.db
+*.dbf
+*.mdb
+*.pdb
+*.sqlite3
