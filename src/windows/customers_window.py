@@ -6,6 +6,7 @@ from PyQt5.QtWidgets import QWidget, QDialog, QMessageBox, QApplication
 from sqlalchemy import exc
 
 from database import data
+from dialogs.edit_customer_dialog import EditCustomerDialog
 from dialogs.new_customer_dialog import NewCustomerDialog
 from pyqt.reference_classes.customers_window import Ui_CustomersWindow
 
@@ -56,8 +57,10 @@ class CustomersWindow(QWidget, Ui_CustomersWindow):
         ])
 
     def _refresh_table(self):
+        QApplication.setOverrideCursor(QtCore.Qt.WaitCursor)
         self.fill_table()
         self.build_table()
+        QApplication.restoreOverrideCursor()
 
     @QtCore.pyqtSlot()
     def add_customer(self):
@@ -65,12 +68,37 @@ class CustomersWindow(QWidget, Ui_CustomersWindow):
         try:
             customers_dialog = NewCustomerDialog(session)
             if customers_dialog.exec_() == QDialog.Accepted:
-                QApplication.setOverrideCursor(QtCore.Qt.WaitCursor)
                 self._refresh_table()
-                QApplication.restoreOverrideCursor()
         except exc.IntegrityError as errmsg:
             print(errmsg)
             session.rollback()
+            msg = QMessageBox()
+            msg.setText("Krytyczny błąd bazy danych")
+            msg.setWindowTitle("Błąd krytyczny")
+            msg.setDetailedText(errmsg)
+            msg.setStandardButtons(QMessageBox.Ok)
+            msg.buttonClicked.connect(sys.exit)
+        finally:
+            session.close()
+
+    @QtCore.pyqtSlot()
+    def edit_customer(self):
+        selected_item = self.customersTableView.selectedIndexes()
+        if not selected_item:
+            QMessageBox.warning(
+                self, "Informacja",
+                "Nie wybrano żadnego kontrahenta do edycji")
+            return
+        session = data.Session()
+        try:
+            customer_query_obj = session.query(data.Customer).filter(
+                data.Customer.alias == selected_item[0].data()).one()
+            edit_employee_window = EditCustomerDialog(session, customer_query_obj)
+            if edit_employee_window.exec_() == QDialog.Accepted:
+                self._refresh_table()
+        except exc.IntegrityError as errmsg:
+            print(errmsg)
+            self.session.rollback()
             msg = QMessageBox()
             msg.setIcon(QMessageBox.Critical)
             msg.setText("Krytyczny błąd bazy danych")
@@ -78,14 +106,8 @@ class CustomersWindow(QWidget, Ui_CustomersWindow):
             msg.setDetailedText(errmsg)
             msg.setStandardButtons(QMessageBox.Ok)
             msg.buttonClicked.connect(sys.exit)
-        else:
-            print('Operacja pomyślna')
         finally:
             session.close()
-
-    @QtCore.pyqtSlot()
-    def edit_customer(self):
-        pass
 
     @QtCore.pyqtSlot()
     def delete_customer(self):
