@@ -45,17 +45,6 @@ class CustomersDialog(QDialog, Ui_CustomerDialog):
             )
             return
 
-        # alias check
-        stmt = self.session.query(data.Customer).filter(data.Customer.alias == self.alias_line_edit.text())
-        # TODO: spróbować alternatywnego sposobu
-        # https://stackoverflow.com/questions/7646173/sqlalchemy-exists-for-query
-        if self.session.query(stmt.exists()).scalar():
-            QMessageBox.warning(
-                self, "Duplikat",
-                "Kontrahent o takiej nazwie już istnieje!"
-            )
-            return
-
         self._commit_to_database()
 
     @abstractmethod

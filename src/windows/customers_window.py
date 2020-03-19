@@ -62,6 +62,15 @@ class CustomersWindow(QWidget, Ui_CustomersWindow):
         self.build_table()
         QApplication.restoreOverrideCursor()
 
+    def _assert_any_checked(self):
+        selected_item = self.customersTableView.selectedIndexes()
+        if not selected_item:
+            QMessageBox.warning(
+                self, "Informacja",
+                "Nie wybrano żadnego kontrahenta do edycji")
+            return False
+        return True
+
     @QtCore.pyqtSlot()
     def add_customer(self):
         session = data.Session()
@@ -83,61 +92,58 @@ class CustomersWindow(QWidget, Ui_CustomersWindow):
 
     @QtCore.pyqtSlot()
     def edit_customer(self):
-        selected_item = self.customersTableView.selectedIndexes()
-        if not selected_item:
-            QMessageBox.warning(
-                self, "Informacja",
-                "Nie wybrano żadnego kontrahenta do edycji")
-            return
-        session = data.Session()
-        try:
-            customer_query_obj = session.query(data.Customer).filter(
-                data.Customer.alias == selected_item[0].data()).one()
-            edit_employee_window = EditCustomerDialog(session, customer_query_obj)
-            if edit_employee_window.exec_() == QDialog.Accepted:
-                self._refresh_table()
-        except exc.IntegrityError as errmsg:
-            print(errmsg)
-            self.session.rollback()
-            msg = QMessageBox()
-            msg.setIcon(QMessageBox.Critical)
-            msg.setText("Krytyczny błąd bazy danych")
-            msg.setWindowTitle("Błąd krytyczny")
-            msg.setDetailedText(errmsg)
-            msg.setStandardButtons(QMessageBox.Ok)
-            msg.buttonClicked.connect(sys.exit)
-        finally:
-            session.close()
+        if self._assert_any_checked():
+            session = data.Session()
+            try:
+                selected_item = self.customersTableView.selectedIndexes()
+                customer_query_obj = session.query(data.Customer).filter(
+                    data.Customer.alias == selected_item[0].data()).one()
+                edit_employee_window = EditCustomerDialog(session, customer_query_obj)
+                if edit_employee_window.exec_() == QDialog.Accepted:
+                    self._refresh_table()
+            except exc.IntegrityError as errmsg:
+                print(errmsg)
+                self.session.rollback()
+                msg = QMessageBox()
+                msg.setIcon(QMessageBox.Critical)
+                msg.setText("Krytyczny błąd bazy danych")
+                msg.setWindowTitle("Błąd krytyczny")
+                msg.setDetailedText(errmsg)
+                msg.setStandardButtons(QMessageBox.Ok)
+                msg.buttonClicked.connect(sys.exit)
+            finally:
+                session.close()
 
     @QtCore.pyqtSlot()
     def delete_customer(self):
-        msg_box = QMessageBox(self)
-        msg_box.setIcon(QMessageBox.Question)
-        msg_box.setWindowTitle('Informacja')
-        msg_box.setText('Na pewno usunąć kontrahenta?')
-        msg_box.setStandardButtons(QMessageBox.Yes | QMessageBox.No)
-        buttonY = msg_box.button(QMessageBox.Yes)
-        buttonY.setText('Tak')
-        buttonN = msg_box.button(QMessageBox.No)
-        buttonN.setText('Nie')
-        msg_box.exec_()
+        if self._assert_any_checked():
+            msg_box = QMessageBox(self)
+            msg_box.setIcon(QMessageBox.Question)
+            msg_box.setWindowTitle('Informacja')
+            msg_box.setText('Na pewno usunąć kontrahenta?')
+            msg_box.setStandardButtons(QMessageBox.Yes | QMessageBox.No)
+            buttonY = msg_box.button(QMessageBox.Yes)
+            buttonY.setText('Tak')
+            buttonN = msg_box.button(QMessageBox.No)
+            buttonN.setText('Nie')
+            msg_box.exec_()
 
-        if msg_box.clickedButton() == buttonY:
-            session = data.Session()
-            element = self.customersTableView.selectionModel().selectedIndexes()
-            try:
-                c = session.query(data.Customer).filter(data.Customer.alias == element[0].data()).one()
-                session.delete(c)
-                session.commit()
-                QMessageBox.information(
-                    self, 'Informacja',
-                    'Kontrahent usunięty'
-                )
-                self._refresh_table()
-            except Exception:
-                QMessageBox.warning(
-                    self, 'Błąd',
-                    'Nieznany błąd'
-                )
-            finally:
-                session.close()
+            if msg_box.clickedButton() == buttonY:
+                session = data.Session()
+                element = self.customersTableView.selectionModel().selectedIndexes()
+                try:
+                    c = session.query(data.Customer).filter(data.Customer.alias == element[0].data()).one()
+                    session.delete(c)
+                    session.commit()
+                    QMessageBox.information(
+                        self, 'Informacja',
+                        'Kontrahent usunięty'
+                    )
+                    self._refresh_table()
+                except Exception:
+                    QMessageBox.warning(
+                        self, 'Błąd',
+                        'Nieznany błąd'
+                    )
+                finally:
+                    session.close()

@@ -10,6 +10,16 @@ class NewCustomerDialog(CustomersDialog):
         super().__init__(session)
 
     def _commit_to_database(self):
+        # customer existence check
+        stmt = self.session.query(data.Customer).filter(data.Customer.alias == self.alias_line_edit.text())
+        # https://stackoverflow.com/questions/7646173/sqlalchemy-exists-for-query
+        if self.session.query(stmt.exists()).scalar():
+            QMessageBox.warning(
+                self, "Duplikat",
+                "Kontrahent o takiej nazwie już istnieje!"
+            )
+            return
+
         QApplication.setOverrideCursor(QtCore.Qt.WaitCursor)
         customer = data.Customer(
             alias=self.alias_line_edit.text(),
