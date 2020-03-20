@@ -11,7 +11,7 @@ getcontext().prec = 6
 getcontext().rounding = ROUND_HALF_UP
 Base = declarative_base()
 
-# customer has a one-to-one relationship with template, where customer is the parent
+# customer has a one-to-many relationship with template, where customer is the parent
 class Customer(Base):
     __tablename__ = "customers"
     id = Column(Integer, primary_key=True)
@@ -24,7 +24,7 @@ class Customer(Base):
     postal_code = Column(String)
     city = Column(String)
     payment = Column(Boolean)
-    template = relationship("Template", uselist=False)
+    template = relationship("Template")
 
 
 # product has many-to-many relationship with template, where template is the parent
@@ -63,12 +63,12 @@ association_table = Table('association', Base.metadata,
                           Column('template_id', Integer, ForeignKey('template.id')))
 
 
-# template implements one-to-one relationship with customer and many-to-many relationship with product
+# template implements one-to-many relationship with customer and many-to-many relationship with product
 class Template(Base):
     __tablename__ = "template"
     id = Column(Integer, primary_key=True)
     customer_id = Column(Integer, ForeignKey(Customer.id))
-    products = relationship("Product", secondary=association_table)
+    products = relationship("Product", secondary=association_table, uselist=False)
     quantity = Column(Numeric)
     net_val = Column(Numeric(precision=2))
     tax_val = Column(Numeric(precision=2))
