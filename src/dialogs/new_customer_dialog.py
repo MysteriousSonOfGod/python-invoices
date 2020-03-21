@@ -33,7 +33,6 @@ class NewCustomerDialog(CustomersDialog):
             payment=self.cash_radio_btn.isChecked()
         )
 
-        customer.template = data.Template(customer_id=customer.id)
         self.session.add(customer)
         self.session.commit()
         QMessageBox.information(

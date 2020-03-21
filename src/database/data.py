@@ -68,7 +68,7 @@ class Template(Base):
     __tablename__ = "template"
     id = Column(Integer, primary_key=True)
     customer_id = Column(Integer, ForeignKey(Customer.id))
-    products = relationship("Product", secondary=association_table, uselist=False)
+    product = relationship("Product", secondary=association_table, uselist=False)
     quantity = Column(Numeric)
     net_val = Column(Numeric(precision=2))
     tax_val = Column(Numeric(precision=2))
