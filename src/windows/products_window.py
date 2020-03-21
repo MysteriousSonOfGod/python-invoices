@@ -32,7 +32,7 @@ class ProductsWindow(QWidget, Ui_ProductsWindow):
         # https://doc.qt.io/qt-5/qfont.html#Weight-enum
         header.setFont(QFont("Sans Serif", pointSize=15, weight=75, italic=False))
         header.setFixedHeight(40)
-        column_widths = (745, 75, 100, 180, 100, 150)
+        column_widths = (730, 75, 100, 180, 100, 150)
         for i, w in enumerate(column_widths):
             self.products_table_view.setColumnWidth(i, w)
             header.setSectionResizeMode(i, QtWidgets.QHeaderView.Fixed)
