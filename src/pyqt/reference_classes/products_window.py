@@ -47,6 +47,8 @@ class Ui_ProductsWindow(object):
         self.products_table_view = QtWidgets.QTableView(ProductsWindow)
         font = QtGui.QFont()
         font.setPointSize(15)
+        font.setBold(True)
+        font.setWeight(75)
         self.products_table_view.setFont(font)
         self.products_table_view.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
         self.products_table_view.setAlternatingRowColors(True)
