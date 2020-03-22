@@ -7,7 +7,6 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship, sessionmaker
 
 # decimal operations settings
-getcontext().prec = 6
 getcontext().rounding = ROUND_HALF_UP
 Base = declarative_base()
 
@@ -63,36 +62,39 @@ association_table = Table('association', Base.metadata,
                           Column('template_id', Integer, ForeignKey('template.id')))
 
 
-# template implements one-to-many relationship with customer and many-to-many relationship with product
+# template implements one-to-one relationship with customer and one-to-many relationship with product
 class Template(Base):
     __tablename__ = "template"
     id = Column(Integer, primary_key=True)
     customer_id = Column(Integer, ForeignKey(Customer.id))
-    product = relationship("Product", secondary=association_table, uselist=False)
+    product = relationship("Product", uselist=False, secondary=association_table)
     quantity = Column(Numeric)
-    net_val = Column(Numeric(precision=2))
-    tax_val = Column(Numeric(precision=2))
-    gross_val = Column(Numeric(precision=2))
+
+    @property
+    def net_val(self):
+        return self.quantity * self.product.unit_net_price
+
+    @property
+    def tax_val(self):
+        return self.net_val * self.product.vat_rate
+
+    @property
+    def gross_val(self):
+        return self.net_val + self.tax_val
 
     def __init__(self, customer_id):
         self.customer_id = customer_id
-        self.products = []
         self.quantity = Decimal(0.0)
-        self.net_val = Decimal(0.0)
-        self.tax_val = Decimal(0.0)
-        self.gross_val = Decimal(0.0)
 
 
-# TODO: implement listener
-@event.listens_for(Template.quantity, "set")
-def quantity_listener(target, value, oldvalue, initiator):
-    print(target)
-    print(initiator)
-    print(oldvalue)
-    print(value)
-    # target.net_val =
-    # target.tax_val =
-    # target.gross_val =
+# # TODO: implement listener
+# @event.listens_for(Template.quantity, "set")
+# def quantity_listener(target, value, oldvalue, initiator):
+#     print(target)
+#     print(value)
+#     # target.net_val =
+#     # target.tax_val =
+#     # target.gross_val =
 
 engine = create_engine('sqlite:///invoices.db')
 
