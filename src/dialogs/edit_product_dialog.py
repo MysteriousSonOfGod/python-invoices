@@ -18,7 +18,7 @@ class EditProductDialog(ProductDialog):
         self.unit_net_price_line_edit.setText(
             QLocale().toString(float(self.product.unit_net_price))
         )
-        self.vat_line_edit.setText(str(int(self.product.vat_rate)))
+        self.vat_line_edit.setText(str(int(self.product.vat_rate * 100)))
         self.yes_radio_btn.setChecked(self.product.per_month)
 
     def _commit_to_database(self):
@@ -27,7 +27,7 @@ class EditProductDialog(ProductDialog):
         self.product.unit = self.unit_line_edit.text()
         self.product.unit_net_price = QLocale().toDouble(
             self.unit_net_price_line_edit.text())[0]
-        self.product.vat_rate = self.vat_line_edit.text()
+        self.product.vat_rate = Decimal(self.vat_line_edit.text()) / 100
         self.product.per_month = self.yes_radio_btn.isChecked()
 
         self.session.commit()

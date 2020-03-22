@@ -49,7 +49,7 @@ class ProductsWindow(QWidget, Ui_ProductsWindow):
             QStandardItem(QLocale().toString(
                 float(product.unit_net_price)
             )),
-            QStandardItem(str(int(product.vat_rate))),
+            QStandardItem(str(int(product.vat_rate * 100))),
             QStandardItem("Tak" if product.per_month else "Nie")
         ])
 

@@ -1,3 +1,5 @@
+from decimal import Decimal
+
 from PyQt5 import QtCore
 from PyQt5.QtCore import QLocale
 from PyQt5.QtWidgets import QMessageBox, QApplication
@@ -28,7 +30,7 @@ class NewProductDialog(ProductDialog):
             unit=self.unit_line_edit.text(),
             unit_net_price=QLocale().toDouble(
                 self.unit_net_price_line_edit.text())[0],
-            vat_rate=self.vat_line_edit.text(),
+            vat_rate=Decimal(self.vat_line_edit.text()) / 100,
             per_month=self.yes_radio_btn.isChecked()
         )
 
