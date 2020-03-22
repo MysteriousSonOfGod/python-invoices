@@ -337,22 +337,6 @@
  </resources>
  <connections>
   <connection>
-   <sender>listView</sender>
-   <signal>clicked(QModelIndex)</signal>
-   <receiver>HomeWindow</receiver>
-   <slot>_load_customer_template()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>134</x>
-     <y>372</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>682</x>
-     <y>348</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>beginning_btn</sender>
    <signal>clicked()</signal>
    <receiver>HomeWindow</receiver>

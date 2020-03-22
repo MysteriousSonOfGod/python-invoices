@@ -193,7 +193,6 @@ class Ui_HomeWindow(object):
         self.gridLayout.addWidget(self.tableView, 1, 7, 1, 4)
 
         self.retranslateUi(HomeWindow)
-        self.listView.clicked['QModelIndex'].connect(HomeWindow._load_customer_template)
         self.beginning_btn.clicked.connect(HomeWindow._select_first)
         self.prev_btn.clicked.connect(HomeWindow._select_prev)
         self.next_btn.clicked.connect(HomeWindow._select_next)
