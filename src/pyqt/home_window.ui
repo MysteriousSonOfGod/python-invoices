@@ -112,7 +112,7 @@
     </widget>
    </item>
    <item row="3" column="8">
-    <widget class="QPushButton" name="pushButton_5">
+    <widget class="QPushButton" name="save_template_btn">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Minimum" vsizetype="Maximum">
        <horstretch>0</horstretch>
@@ -125,7 +125,7 @@
       </font>
      </property>
      <property name="text">
-      <string>Zapisz wzorzec</string>
+      <string>Zapisz jako wzorzec</string>
      </property>
      <property name="icon">
       <iconset resource="../../resources/resources.qrc">
@@ -163,7 +163,7 @@
     </widget>
    </item>
    <item row="3" column="7">
-    <widget class="QPushButton" name="pushButton_6">
+    <widget class="QPushButton" name="add_product_btn">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Minimum" vsizetype="Maximum">
        <horstretch>0</horstretch>
@@ -310,6 +310,9 @@
        <bold>true</bold>
       </font>
      </property>
+     <property name="editTriggers">
+      <set>QAbstractItemView::DoubleClicked</set>
+     </property>
      <property name="alternatingRowColors">
       <bool>true</bool>
      </property>
@@ -413,6 +416,38 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>add_product_btn</sender>
+   <signal>clicked()</signal>
+   <receiver>HomeWindow</receiver>
+   <slot>_add_product()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>401</x>
+     <y>672</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>682</x>
+     <y>348</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>save_template_btn</sender>
+   <signal>clicked()</signal>
+   <receiver>HomeWindow</receiver>
+   <slot>_save_template()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>675</x>
+     <y>672</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>682</x>
+     <y>348</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>_load_customer_template()</slot>
@@ -420,5 +455,7 @@
   <slot>_select_first()</slot>
   <slot>_select_next()</slot>
   <slot>_select_prev()</slot>
+  <slot>_add_product()</slot>
+  <slot>_save_template()</slot>
  </slots>
 </ui>
