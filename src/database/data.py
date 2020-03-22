@@ -10,6 +10,7 @@ from sqlalchemy.orm import relationship, sessionmaker
 getcontext().rounding = ROUND_HALF_UP
 Base = declarative_base()
 
+
 # customer has a one-to-many relationship with template, where customer is the parent
 class Customer(Base):
     __tablename__ = "customers"
@@ -86,15 +87,6 @@ class Template(Base):
         self.customer_id = customer_id
         self.quantity = Decimal(0.0)
 
-
-# # TODO: implement listener
-# @event.listens_for(Template.quantity, "set")
-# def quantity_listener(target, value, oldvalue, initiator):
-#     print(target)
-#     print(value)
-#     # target.net_val =
-#     # target.tax_val =
-#     # target.gross_val =
 
 engine = create_engine('sqlite:///invoices.db')
 
