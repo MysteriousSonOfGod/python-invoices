@@ -5,14 +5,15 @@ from functools import partial
 
 from PyQt5 import QtWidgets, QtCore
 from PyQt5.QtCore import QStringListModel, QLocale, QModelIndex
-from PyQt5.QtGui import QStandardItemModel, QStandardItem
-from PyQt5.QtWidgets import QWidget, QMessageBox, QDialog, QApplication
+from PyQt5.QtGui import QStandardItemModel, QStandardItem, QFont
+from PyQt5.QtWidgets import QWidget, QMessageBox, QDialog, QApplication, QCompleter
 from sqlalchemy import exc
 
 from database import data
 from dialogs.select_product_dialog import SelectProductDialog
 from pyqt.reference_classes.home_window import Ui_HomeWindow
 from utils.delegate import QTableWidgetDisabledItem, QTableWidgetEnabledItem
+from utils.num2words.lang_pl import Num2Word_PL
 
 TWOPLACES = Decimal('.01')
 
@@ -23,7 +24,7 @@ class HomeWindow(QWidget, Ui_HomeWindow):
         self.setupUi(self)
 
         self.selected_customer = None
-
+        self.num_words_converter = Num2Word_PL()
         self.model = QStringListModel()
         self.display_customers_list()
         self.listView.setModel(self.model)
@@ -33,6 +34,9 @@ class HomeWindow(QWidget, Ui_HomeWindow):
         self.listView.selectionModel().selectionChanged.connect(self._load_customer_template)
         self._select_index(0)
         self._build_table()
+        self.completer = QCompleter(self.model, self)
+        self.customer_completer.setCompleter(self.completer)
+
 
     def _build_table(self):
         # Setting the columns' widths
@@ -41,6 +45,8 @@ class HomeWindow(QWidget, Ui_HomeWindow):
             "Wartość\nVAT [%]", "Wartość\nbrutto [zł]"
         ])
         header = self.tableView.horizontalHeader()
+        header.setFont(QFont("Sans Serif", pointSize=15, weight=75, italic=False))
+        header.setFixedHeight(40)
         header.setSectionResizeMode(0, QtWidgets.QHeaderView.Stretch)
         self.tableView.setItemDelegateForColumn(0, QTableWidgetDisabledItem(self.tableView))
         column_widths = (75, 50, 95, 50, 100, 90, 90, 105)
@@ -134,6 +140,7 @@ class HomeWindow(QWidget, Ui_HomeWindow):
             self._fill_template_data(self.selected_customer.template)
             self.customer_label.setText(self.selected_customer.alias)
             self._build_table()
+            self._update_total_label()
         except exc.IntegrityError as errmsg:
             self._display_critical_window(errmsg, session)
         finally:
@@ -143,12 +150,18 @@ class HomeWindow(QWidget, Ui_HomeWindow):
     def _add_product(self):
         session = data.Session()
         try:
-            select_product = SelectProductDialog(session, self.selected_customer)
-            if select_product.exec_() == QDialog.Accepted:
-                QApplication.setOverrideCursor(QtCore.Qt.WaitCursor)
-                self._add_new_row(self.selected_customer.template[-1])
-                self._build_table()
-                QApplication.restoreOverrideCursor()
+            if session.query(data.Product).all():
+                select_product = SelectProductDialog(session, self.selected_customer)
+                if select_product.exec_() == QDialog.Accepted:
+                    QApplication.setOverrideCursor(QtCore.Qt.WaitCursor)
+                    self._add_new_row(self.selected_customer.template[-1])
+                    self._build_table()
+                    QApplication.restoreOverrideCursor()
+            else:
+                QMessageBox.warning(
+                    self, 'Błąd',
+                    'Nie ma żadnych produktów, które można by dodać'
+                )
         except exc.IntegrityError as errmsg:
             self._display_critical_window(errmsg, session)
         finally:
@@ -182,6 +195,16 @@ class HomeWindow(QWidget, Ui_HomeWindow):
                       )
             )
         )
+
+        self._update_total_label()
+
+    def _update_total_label(self):
+        total_gross = sum([temp.gross_val for temp in self.selected_customer.template]).quantize(TWOPLACES)
+        self.total_num_label.setText(f"Łącznie: {QLocale().toString(float(total_gross))}")
+        self.total_words_label.setText(self.num_words_converter.to_currency(
+            val=total_gross,
+            currency="PLN"
+        ))
 
     @QtCore.pyqtSlot()
     def _save_template(self):

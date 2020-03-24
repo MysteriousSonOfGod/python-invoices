@@ -28,7 +28,9 @@ class CustomersWindow(QWidget, Ui_CustomersWindow):
             "Alias", "Imię", "Nazwisko", "PESEL/NIP", "Nazwa\nfirmy", "Adres", "Kod\npocztowy", "Miasto", "Płatność"
         ])
         header = self.customersTableView.horizontalHeader()
-        column_widths = (180, 100, 200, 180, 150, 200, 100, 150, 90)
+        header.setFont(QFont("Sans Serif", pointSize=15, weight=75, italic=False))
+        header.setFixedHeight(40)
+        column_widths = (186, 100, 180, 180, 150, 200, 100, 150, 90)
         for i, w in enumerate(column_widths):
             self.customersTableView.setColumnWidth(i, w)
             header.setSectionResizeMode(i, QtWidgets.QHeaderView.Fixed)

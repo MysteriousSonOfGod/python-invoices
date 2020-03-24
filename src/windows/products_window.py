@@ -29,6 +29,8 @@ class ProductsWindow(QWidget, Ui_ProductsWindow):
             "Nazwa", "Symbol", "Jednostka", "Cena jednostkowa\nnetto [zł]", "Stawka\nVAT [%]", "Comiesięczny"
         ])
         header = self.products_table_view.horizontalHeader()
+        header.setFont(QFont("Sans Serif", pointSize=15, weight=75, italic=False))
+        header.setFixedHeight(40)
         column_widths = (730, 75, 100, 180, 100, 150)
         for i, w in enumerate(column_widths):
             self.products_table_view.setColumnWidth(i, w)

@@ -12,6 +12,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(1366, 768)
+        MainWindow.setMaximumSize(QtCore.QSize(1366, 768))
         font = QtGui.QFont()
         font.setPointSize(12)
         MainWindow.setFont(font)
