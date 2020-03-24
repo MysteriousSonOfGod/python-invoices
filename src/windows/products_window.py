@@ -48,8 +48,8 @@ class ProductsWindow(QWidget, Ui_ProductsWindow):
             QStandardItem(product.product_name),
             QStandardItem(product.symbol),
             QStandardItem(product.unit),
-            QStandardItem(QLocale().toString(
-                float(product.unit_net_price)
+            QStandardItem(QLocale().toCurrencyString(
+                float(product.unit_net_price), symbol=" "
             )),
             QStandardItem(str(int(product.vat_rate * 100))),
             QStandardItem("Tak" if product.per_month else "Nie")

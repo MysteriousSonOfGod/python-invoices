@@ -91,19 +91,19 @@ class HomeWindow(QWidget, Ui_HomeWindow):
             QStandardItem(template.product.product_name),
             QStandardItem(template.product.symbol),
             QStandardItem(template.product.unit),
-            QStandardItem(QLocale().toString(
-                float(template.product.unit_net_price)
+            QStandardItem(QLocale().toCurrencyString(
+                float(template.product.unit_net_price), symbol=" "
             )),
             QStandardItem(str(int(template.quantity))),
-            QStandardItem(QLocale().toString(
-                float(template.net_val)
+            QStandardItem(QLocale().toCurrencyString(
+                float(template.net_val), symbol=" "
             )),
             QStandardItem(str(int(template.product.vat_rate * 100))),
-            QStandardItem(QLocale().toString(
-                float(template.tax_val.quantize(TWOPLACES))
+            QStandardItem(QLocale().toCurrencyString(
+                float(template.tax_val.quantize(TWOPLACES)), symbol=" "
             )),
-            QStandardItem(QLocale().toString(
-                float(template.gross_val.quantize(TWOPLACES))
+            QStandardItem(QLocale().toCurrencyString(
+                float(template.gross_val.quantize(TWOPLACES)), symbol=" "
             ))
         ])
 
@@ -138,7 +138,7 @@ class HomeWindow(QWidget, Ui_HomeWindow):
         try:
             self.selected_customer = session.query(data.Customer).filter(data.Customer.alias == selected_alias).one()
             self._fill_template_data(self.selected_customer.template)
-            self.customer_label.setText(self.selected_customer.alias)
+            self.customer_label.setText(f"Wybrany kontrahent: {self.selected_customer.alias}")
             self._build_table()
             self._update_total_label()
         except exc.IntegrityError as errmsg:
@@ -200,7 +200,7 @@ class HomeWindow(QWidget, Ui_HomeWindow):
 
     def _update_total_label(self):
         total_gross = sum([temp.gross_val for temp in self.selected_customer.template]).quantize(TWOPLACES)
-        self.total_num_label.setText(f"Łącznie: {QLocale().toString(float(total_gross))}")
+        self.total_num_label.setText(f"Łącznie: {QLocale().toCurrencyString(float(total_gross))}")
         self.total_words_label.setText(self.num_words_converter.to_currency(
             val=total_gross,
             currency="PLN"
@@ -222,3 +222,7 @@ class HomeWindow(QWidget, Ui_HomeWindow):
             self._display_critical_window(errmsg, session)
         finally:
             session.close()
+
+    @QtCore.pyqtSlot()
+    def _print_invoice(self):
+        pass

@@ -30,7 +30,9 @@
      </property>
      <property name="font">
       <font>
-       <pointsize>15</pointsize>
+       <pointsize>18</pointsize>
+       <weight>50</weight>
+       <bold>false</bold>
       </font>
      </property>
      <property name="text">
@@ -128,7 +130,7 @@
      </property>
      <property name="font">
       <font>
-       <pointsize>15</pointsize>
+       <pointsize>18</pointsize>
        <weight>50</weight>
        <bold>false</bold>
        <underline>false</underline>
@@ -347,6 +349,36 @@
      </property>
     </widget>
    </item>
+   <item row="0" column="8">
+    <widget class="QPushButton" name="print_btn">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>18</pointsize>
+       <weight>50</weight>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>Drukuj</string>
+     </property>
+     <property name="icon">
+      <iconset resource="../../resources/resources.qrc">
+       <normaloff>:/nowyPrzedrostek/images/icons8-drukuj-30.png</normaloff>:/nowyPrzedrostek/images/icons8-drukuj-30.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>30</width>
+       <height>30</height>
+      </size>
+     </property>
+    </widget>
+   </item>
   </layout>
  </widget>
  <resources>
@@ -449,6 +481,22 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>print_btn</sender>
+   <signal>clicked()</signal>
+   <receiver>HomeWindow</receiver>
+   <slot>_print_invoice()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>401</x>
+     <y>28</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>682</x>
+     <y>348</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>_load_customer_template()</slot>
@@ -458,5 +506,6 @@
   <slot>_select_prev()</slot>
   <slot>_add_product()</slot>
   <slot>_save_template()</slot>
+  <slot>_print_invoice()</slot>
  </slots>
 </ui>
