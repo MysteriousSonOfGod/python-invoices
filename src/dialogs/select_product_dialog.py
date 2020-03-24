@@ -17,6 +17,7 @@ class SelectProductDialog(QDialog, Ui_SelectProductDialog):
         self._fill_table()
         self.tableView.setModel(self.sti)
         self._build_table()
+        self.tableView.setCurrentIndex(self.sti.index(0, 0))
 
     def _build_table(self):
         # Setting the columns' widths
@@ -53,7 +54,6 @@ class SelectProductDialog(QDialog, Ui_SelectProductDialog):
         selected_item = self.tableView.selectedIndexes()
         product_query_obj = self.session.query(data.Product).filter(
             data.Product.product_name == selected_item[0].data()).one()
-
         template = data.Template(self.customer.id)
         template.product = product_query_obj
         self.customer.template.append(template)
